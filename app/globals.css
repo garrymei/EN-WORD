@@ -27,7 +27,8 @@ body {
 
 button,
 input,
-textarea {
+textarea,
+select {
   font: inherit;
 }
 
@@ -82,6 +83,47 @@ button:disabled {
 .topbar p {
   margin: 4px 0 0;
   color: var(--muted);
+}
+
+.book-switcher {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(280px, 0.8fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.book-select,
+.book-create {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 12px;
+}
+
+.book-select span {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.book-select select,
+.book-create input {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  padding: 0 12px;
+  outline: none;
+}
+
+.book-select select:focus,
+.book-create input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(36, 88, 166, 0.12);
 }
 
 nav {
@@ -235,7 +277,8 @@ label input:focus {
 
 .section-head p,
 .empty-state p,
-.explain-area p {
+.explain-area p,
+.muted-line {
   margin: 6px 0 0;
   color: var(--muted);
 }
@@ -252,6 +295,22 @@ textarea {
 
 .import-result {
   margin-top: 18px;
+}
+
+.progress-bar {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #d7ddd8;
+  margin: 0 0 14px;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--blue);
+  transition: width 180ms ease;
 }
 
 .metric-grid {
@@ -373,6 +432,60 @@ textarea {
   font-weight: 400;
 }
 
+.answer-heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.answer-heading h2 {
+  margin-bottom: 0;
+}
+
+.speaker-button {
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
+  border-color: #bad7c9;
+  background: #e6f5ee;
+  padding: 0;
+  margin-left: 8px;
+  line-height: 1;
+}
+
+.phrase-translation {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.meaning-variants {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0 12px;
+}
+
+.meaning-variants > span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.meaning-variants div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.meaning-variants em {
+  border: 1px solid #cfdad3;
+  border-radius: 999px;
+  background: #f4faf7;
+  color: #285a43;
+  font-style: normal;
+  padding: 4px 10px;
+}
+
 dl {
   margin: 18px 0;
 }
@@ -406,9 +519,14 @@ label {
   }
 
   .topbar,
-  .section-head {
+  .section-head,
+  .book-switcher {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .book-switcher {
+    display: flex;
   }
 
   nav {

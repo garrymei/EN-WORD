@@ -175,7 +175,18 @@ align expectations with stakeholders
 
 ## 单词池
 
-单词池保存所有已导入单词。单词即使多次拼写正确，也不会被移出池子。
+系统支持多个单词本。单词本是单词池外层的分组，每个单词本拥有独立的单词、每日背诵数量、统计和抽词范围。
+
+示例：
+
+```text
+商务英语词汇
+项目管理词汇
+PMP 词汇
+产品经理常用词
+```
+
+单词池保存当前单词本中已导入的单词。单词即使多次拼写正确，也不会被移出池子。
 
 单词池页面需要支持：
 
@@ -189,6 +200,16 @@ align expectations with stakeholders
 - 手动确认待确认单词。
 - 处理释义冲突单词。
 - 查看每个单词的权重、正确次数、错误次数和最近出现时间。
+
+单词本页面或顶部切换区需要支持：
+
+- 查看单词本列表。
+- 创建新单词本。
+- 切换当前单词本。
+- 导入时把单词写入当前单词本。
+- 背诵时只从当前单词本抽词。
+- 统计时只统计当前单词本。
+- 每个单词本可以有独立的每日背诵数量。
 
 ## 每日背诵配置
 
@@ -494,6 +515,7 @@ word C = 70%
 
 ```text
 id
+book_id
 word
 normalized_word
 user_meaning
@@ -516,6 +538,18 @@ typing_error_count
 wrong_count
 correct_count
 seen_count
+created_at
+updated_at
+```
+
+### word_books
+
+```text
+id
+name
+description
+daily_study_count
+is_active
 created_at
 updated_at
 ```

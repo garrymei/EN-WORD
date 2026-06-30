@@ -7,3 +7,5 @@ data/*.sqlite-journal
 .env.local
 npm-debug.log*
 dev-server.*.log
+.dbg
+debug-*.md
